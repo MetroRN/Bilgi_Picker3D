@@ -1,3 +1,4 @@
+﻿using System;
 using Commands;
 using Data.UnityObjects;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Managers
         #region Self Variables
 
         #region Public Variables
-
+        
         #endregion
 
         #region Serialized Variables
@@ -19,7 +20,7 @@ namespace Managers
 
         #endregion
 
-        #region Private Variables
+        #region Pirvate Variables
 
         private CD_Level _levelData;
 
@@ -34,7 +35,7 @@ namespace Managers
         {
             _levelData = GetLevelData();
             levelID = GetActiveLevel();
-
+            
             Init();
         }
 
@@ -70,19 +71,15 @@ namespace Managers
             CoreGameSignals.Instance.onClearActiveLevel += _levelDestroyerCommand.Execute;
             CoreGameSignals.Instance.onNextLevel += OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
+
         }
 
         private void UnSubscribeEvents()
         {
-            CoreGameSignals.Instance.onLevelInitialize -= _levelLoaderCommand.Execute; ;
+            CoreGameSignals.Instance.onLevelInitialize -= _levelLoaderCommand.Execute;
             CoreGameSignals.Instance.onClearActiveLevel -= _levelDestroyerCommand.Execute;
             CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
-        }
-
-        private void OnDisable()
-        {
-            UnSubscribeEvents();
         }
 
         private void Start()
@@ -90,6 +87,7 @@ namespace Managers
             _levelLoaderCommand.Execute(levelID);
         }
 
+      
         private void OnNextLevel()
         {
             levelID++;

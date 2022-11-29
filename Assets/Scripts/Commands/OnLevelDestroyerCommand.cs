@@ -1,4 +1,4 @@
-using Interfaces;
+﻿using Interfaces;
 using UnityEngine;
 
 namespace Commands
@@ -7,13 +7,11 @@ namespace Commands
     {
         private Transform _levelHolder;
 
-
         public OnLevelDestroyerCommand(Transform levelHolder)
         {
             _levelHolder = levelHolder;
         }
-
-
+        
         public void Execute()
         {
             Object.Destroy(_levelHolder.GetChild(0).gameObject);
@@ -21,6 +19,7 @@ namespace Commands
 
         public void Execute(int value)
         {
+            
         }
     }
 }

@@ -1,4 +1,4 @@
-using Interfaces;
+﻿using Interfaces;
 using UnityEngine;
 
 namespace Commands
@@ -11,7 +11,7 @@ namespace Commands
         {
             _levelHolder = levelHolder;
         }
-
+        
         public void Execute()
         {
         }
@@ -20,5 +20,6 @@ namespace Commands
         {
             Object.Instantiate(Resources.Load<GameObject>($"Prefabs/LevelPrefabs/level{levelID}"), _levelHolder);
         }
+        
     }
 }
