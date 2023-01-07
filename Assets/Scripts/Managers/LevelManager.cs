@@ -25,8 +25,8 @@ namespace Managers
 
         private CD_Level _levelData;
 
-        private OnLevelLoaderCommand _levelLoaderCommand;
-        private OnLevelDestroyerCommand _levelDestroyerCommand;
+        private Commands.OnLevelLoaderCommand _levelLoaderCommand;
+        private Commands.OnLevelDestroyerCommand _levelDestroyerCommand;
 
         #endregion
 
@@ -57,8 +57,8 @@ namespace Managers
 
         private void Init()
         {
-            _levelLoaderCommand = new OnLevelLoaderCommand(levelHolder);
-            _levelDestroyerCommand = new OnLevelDestroyerCommand(levelHolder);
+            _levelLoaderCommand = new Commands.OnLevelLoaderCommand(levelHolder);
+            _levelDestroyerCommand = new Commands.OnLevelDestroyerCommand(levelHolder);
         }
 
         private void OnEnable()
