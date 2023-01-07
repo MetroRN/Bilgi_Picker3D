@@ -1,6 +1,6 @@
-﻿using System;
-using Commands;
+﻿using Commands;
 using Data.UnityObjects;
+using Signals;
 using UnityEngine;
 
 namespace Managers
@@ -10,7 +10,7 @@ namespace Managers
         #region Self Variables
 
         #region Public Variables
-        
+
         #endregion
 
         #region Serialized Variables
@@ -20,7 +20,7 @@ namespace Managers
 
         #endregion
 
-        #region Pirvate Variables
+        #region Private Variables
 
         private CD_Level _levelData;
 
@@ -35,7 +35,7 @@ namespace Managers
         {
             _levelData = GetLevelData();
             levelID = GetActiveLevel();
-            
+
             Init();
         }
 
@@ -71,23 +71,27 @@ namespace Managers
             CoreGameSignals.Instance.onClearActiveLevel += _levelDestroyerCommand.Execute;
             CoreGameSignals.Instance.onNextLevel += OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel += OnRestartLevel;
-
         }
 
         private void UnSubscribeEvents()
         {
-            CoreGameSignals.Instance.onLevelInitialize -= _levelLoaderCommand.Execute;
+            CoreGameSignals.Instance.onLevelInitialize -= _levelLoaderCommand.Execute; ;
             CoreGameSignals.Instance.onClearActiveLevel -= _levelDestroyerCommand.Execute;
             CoreGameSignals.Instance.onNextLevel -= OnNextLevel;
             CoreGameSignals.Instance.onRestartLevel -= OnRestartLevel;
         }
 
-        private void Start()
+        private void OnDisable()
         {
-            _levelLoaderCommand.Execute(levelID);
+            UnSubscribeEvents();
         }
 
-      
+        private void Start()
+        {
+            CoreGameSignals.Instance.onLevelInitialize?.Invoke(levelID);
+            CoreUISignals.Instance.onOpenPanel?.Invoke(Enums.UIPanelTypes.Start, 1);
+        }
+
         private void OnNextLevel()
         {
             levelID++;
