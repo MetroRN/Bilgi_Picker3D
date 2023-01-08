@@ -11,10 +11,12 @@ namespace Controllers.Player
         #region Self Variables
 
         #region Serialized Variables
+        
 
         [SerializeField] private PlayerManager manager;
         [SerializeField] private new Collider collider;
         [SerializeField] private new Rigidbody rigidbody;
+        
 
         #endregion
 
@@ -29,6 +31,7 @@ namespace Controllers.Player
                 InputSignals.Instance.onDisableInput?.Invoke();
                 DOVirtual.DelayedCall(3, () =>
                 {
+
                     var result = other.transform.parent.GetComponentInChildren<PoolController>()
                         .TakeStageResult(manager.StageValue);
                     if (result)
@@ -51,10 +54,11 @@ namespace Controllers.Player
 
             if (other.CompareTag("MiniGame"))
             {
-                //Write Mini Game Conditions
+                //Done by different way..
             }
         }
 
+    
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;

@@ -8,6 +8,13 @@ TagManager:
   - PoolArea
   - Collectable
   - MiniGame
+  - Physics
+  - MovingCollectable
+  - Cloud
+  - Cube
+  - Sphere
+  - Picker
+  - Magnet
   layers:
   - Default
   - TransparentFX

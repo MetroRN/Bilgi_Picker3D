@@ -1,7 +1,9 @@
 using System;
+using Controllers.Pool;
 
 namespace Data.ValueObjects
 {
+    
     [Serializable]
     public struct PlayerData
     {
@@ -15,7 +17,6 @@ namespace Data.ValueObjects
         public float ForwardSpeed;
         public float SidewaysSpeed;
         public float ForwardForceCounter;
-
         public MovementData(float forwardSpeed, float sidewaysSpeed, float forwardForceCounter)
         {
             ForwardSpeed = forwardSpeed;
