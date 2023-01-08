@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7138880357747339731}
   m_Layer: 0
-  m_Name: MiniGameStage
+  m_Name: MiniGameStageEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
